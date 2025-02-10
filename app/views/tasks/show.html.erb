@@ -1,7 +1,32 @@
-<h2><%= @task.title %></h2>
-<p><%= @task.details %></p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row p-3">
+        <h2><%= @task.title %></h2>
+      </div>
+    </div>
 
-<%= link_to "Delete",
-  task_path(@task),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+    <div class="col">
+      <a href="<%= edit_task_path(@task)%>" class="text-decoration-none form-control custom-link w-auto">Edit a task </a>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="p-3 m-3 form-control bg-light">
+      <p><%= @task.details %></p>
+    </div>
+  </div>
+
+  <div class="row p-3">
+    <%= link_to task_path(@task), class: "text-decoration-none", method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+      Delete <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </div>
+
+  <div class="p-3">
+    <a href="<%= tasks_path %>" class="text-decoration-none">
+      Back to the list
+    </a>
+  </div>
+
+</div>
