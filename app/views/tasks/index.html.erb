@@ -5,15 +5,15 @@
 
   <div class="row p-3 border-bottom">
     <% @tasks.each do |task|%>
-    <ul>
-      <li class="list-unstyled" >
-        <input type="checkbox" aria-label="Checkbox for following text input">
-        <%= link_to task.title, task_path(task), class: "text-decoration-none"%>
-        <a data-turbo-method="delete" data-turbo-confirm="Are you sure?" href="/tasks/6">
-          <i class="fa-solid fa-trash"></i>
-        </a>
-      </li>
-    </ul>
+  <ul>
+    <li class="list-unstyled">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+      <%= link_to task.title, task_path(task), class: "text-decoration-none" %>
+      <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none" do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
+    </li>
+  </ul>
       <% end %>
   </div>
 
